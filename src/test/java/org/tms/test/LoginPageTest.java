@@ -7,11 +7,12 @@ import org.tms.service.LoginPageService;
 
 public class LoginPageTest extends BaseTest {
 
-    private LoginPageService loginPageService = new LoginPageService();
+    LoginPageService loginPageService = new LoginPageService();
+    InventoryPage inventoryPage = loginPageService.login();
 
     @Test
     public void loginTest() {
-        InventoryPage inventoryPage = loginPageService.login();
+
         String actualTextOfInventoryPage = inventoryPage.getTextOfNameOfMainPageSection();
         String expectedPageText = "PRODUCTS";
         Assert.assertEquals(actualTextOfInventoryPage, expectedPageText, "The actual text of the page does not match expected!");
