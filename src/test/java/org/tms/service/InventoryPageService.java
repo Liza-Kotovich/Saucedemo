@@ -1,5 +1,6 @@
 package org.tms.service;
 
+import io.qameta.allure.Step;
 import org.tms.page.InventoryPage;
 
 public class InventoryPageService {
@@ -7,20 +8,26 @@ public class InventoryPageService {
     private InventoryPage inventoryPage;
     private LoginPageService loginPageService = new LoginPageService();
 
-    public InventoryPageService login(){
+    @Step("Log in to the site")
+    public InventoryPageService login() {
         inventoryPage = loginPageService.login();
         return this;
     }
 
-    public InventoryPageService addToCartItem(int itemIndex){
+    @Step("Add to cart item")
+    public InventoryPageService addToCartItem(int itemIndex) {
         inventoryPage.clickAddToCartButtonByIndex(itemIndex);
         return this;
     }
-    public InventoryPageService removeItemFromCart(int itemIndex){
+
+    @Step("Remove item from the cart")
+    public InventoryPageService removeItemFromCart(int itemIndex) {
         inventoryPage.clickRemoveItemFromCartButtonByIndex(itemIndex);
         return this;
     }
-    public String getNumberOfItemsInCart(){
+
+    @Step("Get number of items in the cart")
+    public String getNumberOfItemsInCart() {
         return inventoryPage.getTextOfNumberThingsInCart();
     }
 }
