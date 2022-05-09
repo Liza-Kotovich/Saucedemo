@@ -21,8 +21,6 @@ pipeline {
             // Get some code from a GitHub repository
             git branch: "${params.BRANCH}", url: 'https://github.com/Liza-Kotovich/Saucedemo.git'
 
-            // Run Maven on a Unix agent.
-            //sh "mvn clean test"
 
             // To run Maven on a Windows agent, use
             bat "mvn -Dmaven.test.failure.ignore=true -Dbrowser=chrome -Dsurefire.suiteXmlFiles=src/test/resources/testng-smoke.xml clean test"
